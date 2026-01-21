@@ -1,0 +1,983 @@
+/* 
+  Modern Portfolio Styles
+  Uses CSS Variables for easy theming
+*/
+
+:root {
+  /* Colors - Dark Theme Enforced (Cyberpunk/Neon Vibes) */
+  --bg-color: #0d1117;
+  /* Very Dark Blue/Gray */
+  --bg-alt: #161b22;
+  /* Slightly lighter for cards */
+  --text-main: #f0f6fc;
+  --text-muted: #8b949e;
+
+  /* Vibrant Accent - Neon Cyan/Blue */
+  --accent: #00f2ff;
+  --accent-hover: #00c8d4;
+
+  --card-bg: #161b22;
+  --border: #30363d;
+
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  --shadow-hover: 0 10px 15px -3px rgba(0, 242, 255, 0.2), 0 4px 6px -2px rgba(0, 242, 255, 0.1);
+
+  /* Font */
+  --font-main: 'Inter', sans-serif;
+}
+
+/* Remove separate dark mode selector since it's enforced */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Utilities */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section {
+  padding: 100px 0;
+}
+
+.alt-bg {
+  background-color: var(--bg-alt);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+}
+
+ul {
+  list-style: none;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #000;
+  /* Black text on neon accent */
+  box-shadow: 0 0 10px rgba(0, 242, 255, 0.4);
+  border: none;
+  font-weight: 700;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 242, 255, 0.23);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+}
+
+.btn-outline:hover {
+  background-color: var(--accent);
+  color: #1f2937;
+  transform: translateY(-2px);
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  text-align: center;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: var(--accent);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 0;
+  background: rgba(var(--bg-color), 0.95);
+  background-color: var(--bg-color);
+  /* Fallback */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 1000;
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-img {
+  height: 40px;
+  width: auto;
+  border-radius: 50%;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-main);
+  transition: color 0.3s ease;
+}
+
+.logo:hover {
+  color: var(--accent);
+}
+
+.logo .accent {
+  color: var(--accent);
+}
+
+/* GitHub Stats Section */
+#github-stats {
+  padding: 60px 0;
+}
+
+/* --- GitHub Calendar Container & Card Styling --- */
+/* --- 1. Clean up & Container --- */
+.calendar-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: #0d1117;
+  /* Matching GitHub's dark mode */
+}
+
+.calendar {
+  width: 100%;
+  max-width: 900px;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  padding: 30px;
+  background-color: #161b22;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+/* --- 2. Hide Unnecessary Text --- */
+/* This removes the "Skip to contributions year list" link for a cleaner look */
+.calendar .contrib-column.text-center.p-1,
+.calendar a[href*="year-list"],
+.calendar .sr-only,
+.js-yearly-contributions h2+p {
+  /* Sometimes it's here */
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  overflow: hidden !important;
+}
+
+/* --- 3. Neon Yellow/Amber Heatmap --- */
+.calendar rect.ContributionCalendar-day[data-level="0"] {
+  fill: #21262d;
+}
+
+.calendar rect.ContributionCalendar-day[data-level="1"] {
+  fill: #453500;
+}
+
+.calendar rect.ContributionCalendar-day[data-level="2"] {
+  fill: #7a5f00;
+}
+
+.calendar rect.ContributionCalendar-day[data-level="3"] {
+  fill: #ffc107;
+}
+
+.calendar rect.ContributionCalendar-day[data-level="4"] {
+  fill: #ffeb3b;
+  filter: drop-shadow(0 0 2px rgba(255, 235, 59, 0.5));
+  /* Subtle glow for peak days */
+}
+
+/* --- 4. Beautiful Typography & Labels --- */
+.calendar text,
+.calendar .ContributionCalendar-label {
+  fill: #8b949e !important;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+/* --- 5. Custom Styling for the Bottom Stats --- */
+/* This targets the 0 total / Longest streak section */
+.calendar .contrib-number {
+  color: #ffc107 !important;
+  /* Yellow stats */
+  font-size: 24px !important;
+  font-weight: 700 !important;
+}
+
+.calendar .text-muted {
+  color: #8b949e !important;
+}
+
+/* --- 6. Tooltip (Modern Dark) --- */
+.github-calendar-tooltip {
+  background: #21262d !important;
+  color: #ffeb3b !important;
+  border: 1px solid #ffc107 !important;
+  border-radius: 8px !important;
+  padding: 10px 15px !important;
+  font-weight: 600;
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links nav ul li a {
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.nav-links nav ul li a {
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--accent);
+  text-shadow: 0 0 8px rgba(0, 242, 255, 0.6);
+}
+
+/* Remove Theme Toggle Button Style */
+#theme-toggle {
+  display: none;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: var(--text-main);
+  margin: 2px 0;
+  border-radius: 3px;
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 80px;
+  /* Offset for fixed header */
+}
+
+.greeting {
+  font-size: 1.2rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.name {
+  font-size: 4rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  line-height: 1.1;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.accent-text {
+  color: var(--text-main);
+}
+
+.tagline {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.hero-image-container {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--accent);
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.4);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  margin-top: 20px;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.hero-image-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+}
+
+.hero-image-container:hover .hero-image {
+  transform: scale(1.1);
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* About Section */
+.bio {
+  font-size: 1.1rem;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 50px;
+  color: var(--text-muted);
+}
+
+.highlight {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.skills-container {
+  text-align: center;
+}
+
+.skills-container h3 {
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.skill-tag {
+  background-color: var(--bg-alt);
+  border: 1px solid var(--border);
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.skill-tag:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* Projects Section */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  background-color: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--accent);
+}
+
+.project-title {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.project-desc {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 25px;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.tech-stack span {
+  font-size: 0.85rem;
+  color: var(--accent);
+  background-color: rgba(37, 99, 235, 0.1);
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.project-link:hover {
+  color: var(--accent);
+}
+
+/* Education Section */
+.education-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s;
+}
+
+.education-card:hover {
+  transform: scale(1.02);
+}
+
+.edu-header {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.edu-icon {
+  font-size: 2.5rem;
+  color: var(--accent);
+  background-color: rgba(37, 99, 235, 0.1);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.edu-info h3 {
+  font-size: 1.25rem;
+  margin-bottom: 5px;
+}
+
+.edu-info h4 {
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.edu-date {
+  margin-left: auto;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.edu-desc {
+  color: var(--text-muted);
+  padding-left: 80px;
+  /* Align with text start */
+}
+
+/* Contact Section */
+.contact-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact-info {
+  text-align: center;
+}
+
+.contact-info p {
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.social-links a {
+  font-size: 2rem;
+  color: var(--text-muted);
+  transition: all 0.3s;
+}
+
+.social-links a:hover {
+  color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.contact-form {
+  background-color: var(--card-bg);
+  padding: 40px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid var(--border);
+  background-color: var(--bg-alt);
+  color: var(--text-main);
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+}
+
+.form-group label {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  color: var(--text-muted);
+  transition: all 0.2s;
+  pointer-events: none;
+  background-color: transparent;
+}
+
+/* Floating label effect */
+.form-group input:focus+label,
+.form-group input:not(:placeholder-shown)+label,
+.form-group textarea:focus+label,
+.form-group textarea:not(:placeholder-shown)+label {
+  top: -10px;
+  left: 10px;
+  background-color: var(--card-bg);
+  padding: 0 5px;
+  font-size: 0.85rem;
+  color: var(--accent);
+}
+
+/* Footer */
+.footer {
+  padding: 40px 0;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+.footer .small {
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.footer i {
+  color: red;
+}
+
+/* Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Page Headers (Skills & Achievements) */
+.page-content {
+  padding-top: 120px;
+  /* Navbar height + space */
+  padding-bottom: 60px;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.page-subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  margin-bottom: 60px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.category-title {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.category-title i {
+  color: var(--accent);
+}
+
+/* Skills Page Styles */
+.skills-category {
+  margin-bottom: 60px;
+}
+
+.skills-grid-large {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.skill-card {
+  background-color: var(--card-bg);
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--accent);
+}
+
+.skill-icon {
+  font-size: 3rem;
+  color: var(--accent);
+  margin-bottom: 15px;
+}
+
+.skill-card h3 {
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: var(--bg-alt);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background-color: var(--accent);
+  border-radius: 4px;
+  transition: width 1s ease-in-out;
+}
+
+.skills-summary {
+  text-align: center;
+  background: var(--bg-alt);
+  padding: 30px;
+  border-radius: 12px;
+  margin-top: 30px;
+}
+
+.skills-summary h3 {
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+}
+
+.skills-summary p {
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.skills-summary .btn {
+  font-size: 0.9rem;
+  padding: 10px 20px;
+}
+
+/* Achievements & Timeline Styles */
+.timeline-section {
+  max-width: 800px;
+  margin: 0 auto 60px;
+}
+
+.timeline {
+  position: relative;
+  border-left: 2px solid var(--border);
+  margin-left: 20px;
+  padding-left: 40px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -49px;
+  /* Adjust based on border & padding: - (padding-left + border-width/2 + marker-width/2) roughly */
+  top: 0;
+  width: 16px;
+  height: 16px;
+  background-color: var(--accent);
+  border: 4px solid var(--bg-color);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.timeline-marker.achievement {
+  background-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.timeline-content {
+  background-color: var(--card-bg);
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transition: transform 0.3s;
+}
+
+.timeline-content:hover {
+  transform: translateX(5px);
+  border-color: var(--accent);
+}
+
+.timeline-content .date {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 5px;
+}
+
+.timeline-content h3 {
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+
+.timeline-content h4 {
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.timeline-content p {
+  color: var(--text-muted);
+}
+
+/* Updated Mobile Styles */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    /* Hide for now, hamburger logic in JS needed or CSS state */
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: var(--card-bg);
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    text-align: center;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .name {
+    font-size: 2.5rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .edu-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .edu-date {
+    margin: 10px 0;
+  }
+
+  .edu-desc {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .timeline {
+    margin-left: 0;
+    padding-left: 30px;
+  }
+
+  .timeline-marker {
+    left: -39px;
+  }
+
+  .hero-container {
+    flex-direction: column-reverse;
+    /* Put image above text or below? User requested "suitable place". Above is standard on mobile, below on desktop. But wait flex-direction column puts it below texts if image is last in DOM. */
+  }
+
+  /* Actually in my HTML image is AFTER text. So column matches flow. */
+}
+
+/* Desktop layout for Hero */
+@media (min-width: 992px) {
+  .hero-container {
+    flex-direction: row;
+    text-align: left;
+    justify-content: space-between;
+  }
+
+  .hero-content {
+    max-width: 600px;
+    text-align: left;
+  }
+
+  .cta-buttons {
+    justify-content: flex-start;
+  }
+
+  .hero-image-container {
+    width: 400px;
+    height: 400px;
+    margin-top: 0;
+  }
+
+  .tagline {
+    margin: 0 0 40px 0;
+  }
+}

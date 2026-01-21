@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <title>Portfolio | CSE Student & Developer</title>
+    <meta name="description" content="Personal portfolio of a Computer Science student and software developer.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                G<span class="accent">.Roy</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="achievements.html">Achievements</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button id="theme-toggle" aria-label="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container hero-container">
+            <div class="hero-content fade-in-up">
+                <span class="greeting">Hello, I'm</span>
+                <h1 class="name">Gopal Roy</h1>
+                <h2 class="title">Software Developer & <br><span class="accent-text">CSE Student & AI Enthusiast</span>
+                </h2>
+                <p class="tagline">Building modern, efficient, and scalable software solutions. Passionate about
+                    algorithms and system design.</p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="files/Gopal_Roy_CV.pdf" class="btn btn-outline" download><i class="fas fa-download"></i>
+                        Download CV</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
+            </div>
+            <div class="hero-image-container fade-in">
+                <img src="images/profile.jpg" alt="Gopal Roy" class="hero-image">
+            </div>
+            <!-- Optional: Hero Image or Graphic could go here -->
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">About Me</h2>
+            <div class="about-content fade-in">
+                <p class="bio">
+                    I am a second year Computer Science and Engineering student at <strong
+                        class="highlight">BUET</strong>.
+                    I love turning complex problems into simple, beautiful, and intuitive designs.
+                    My journey involves exploring various technologies, participating in competitive programming,
+                    and building software that adds value.I am passionate about learning modern technologies, building
+                    efficient systems, and working on meaningful projects.
+                    With a growing focus on ML and problem-solving, I aim to contribute to impactful, high-quality
+                    engineering and
+                    research work, with particular interest in exploring ML model efficiency, NLP, and data-driven
+                    systems research.
+                </p>
+
+                <div class="skills-summary">
+                    <h3>Tech Stack</h3>
+                    <p>I work with C++, Java, Python, and modern web technologies. Check out my full skill set below.
+                    </p>
+                    <a href="skills.html" class="btn btn-small">View All Skills</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section alt-bg">
+        <div class="container">
+            <h2 class="section-title fade-in">Featured Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card fade-in">
+                    <div class="card-content">
+                        <h3 class="project-title">Virtual-Tourist-Guide</h3>
+                        <p class="project-desc">An interactive iGraphics-based project designed for beginners to explore
+                            domestic and international tourist spots while learning fundamental programming and
+                            graphical interface design.</p>
+                        <div class="tech-stack">
+                            <span>iGraphics</span>
+                            <span>C++</span>
+                        </div>
+                        <a href="https://github.com/GopalbuetCSE22/Virtual-Tourist-Guide" class="project-link"><i
+                                class="fab fa-github"></i> View Code</a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card fade-in">
+                    <div class="card-content">
+                        <h3 class="project-title">Ipl_Player_DataBase</h3>
+                        <p class="project-desc">A Java-based application leveraging networking and multithreading to
+                            manage real-time IPL player statistics, team rosters, and performance data.</p>
+                        <div class="tech-stack">
+                            <span>Java</span>
+                            <span>Networking</span>
+                            <span>Multithreading</span>
+                        </div>
+                        <a href="https://github.com/GopalbuetCSE22/Ipl_Player_DataBase" class="project-link"><i
+                                class="fab fa-github"></i> View Code</a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card fade-in">
+                    <div class="card-content">
+                        <h3 class="project-title">AfterMart</h3>
+                        <p class="project-desc">AfterMart is a full-stack, role-based marketplace platform built with
+                            React, Node.js, and PostgreSQL that facilitates secure second-hand transactions through
+                            moderated listings, integrated delivery logistics, and real-time communication.</p>
+                        <div class="tech-stack">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>PostgreSQL</span>
+                        </div>
+                        <a href="https://github.com/GopalbuetCSE22/AfterMart-FrontEnd" class="project-link"><i
+                                class="fab fa-github"></i> View Code</a>
+                    </div>
+                </div>
+
+
+                <!-- Project: Know Sylhet -->
+                <div class="project-card fade-in">
+                    <div class="card-content">
+                        <h3 class="project-title">Know Sylhet</h3>
+                        <p class="project-desc">A interactive website featuring all about Sylhet. (Contributed by me).
+                        </p>
+                        <div class="tech-stack">
+                            <span>React.js</span>
+                            <span>Node.js</span>
+                            <span>Express.js</span>
+                            <span>MongoDB</span>
+                        </div>
+                        <a href="https://github.com/ShuvodipDasSowmik/Know_Sylhet" class="project-link"><i
+                                class="fab fa-github"></i> View Code</a>
+                    </div>
+                </div>
+
+                <!-- Project: Urbanome -->
+                <div class="project-card fade-in">
+                    <div class="card-content">
+                        <h3 class="project-title">Urbanome</h3>
+                        <p class="project-desc">A collaborative project focused on "Data Pathways to Healthy Cities",
+                            developed for NSAPC 2025. Analyzing urban data for sustainable city planning.</p>
+                        <div class="tech-stack">
+                            <span>React.js</span>
+                            <span>Express.js</span>
+                            <span>Leaflet.js</span>
+                            <span>Python</span>
+                        </div>
+                        <a href="https://github.com/ShuvodipDasSowmik/Urbanome" class="project-link"><i
+                                class="fab fa-github"></i> View Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub Contribution Section Removed - Moved to skills.html -->
+
+    <!-- Education Section Removed - Moved to achievements.html -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="section alt-bg">
+        <div class="container">
+            <h2 class="section-title fade-in">Get In Touch</h2>
+            <div class="contact-wrapper fade-in">
+                <div class="contact-info">
+                    <p>I am currently available for freelance work or full-time opportunities. If you have a project
+                        that needs some creative touches, feel free to connect.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/GopalbuetCSE22" aria-label="GitHub"><i
+                                class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/gopal-roy-1a5b952b9" aria-label="LinkedIn"><i
+                                class="fab fa-linkedin"></i></a>
+                        <a href="mailto:[royccsgopal49@gmail.com]" aria-label="Email"><i
+                                class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Gopal Roy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css" />
+    <script src="script.js"></script>
+</body>
+
+</html>
