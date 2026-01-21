@@ -4,7 +4,7 @@ Welcome to my personal portfolio website! This project showcases my skills, proj
 
 ## 🚀 Live Demo
 
-[Visit the Live Site](https://gopalbuetcse22.github.io/My_protfolio/)
+[Visit the Live Site](https://gopalroyportfolio.netlify.app/)
 
 ## ✨ Features
 
