@@ -981,3 +981,118 @@ ul {
     margin: 0 0 40px 0;
   }
 }
+
+/* Specific Mobile Refinements for "User Friendly" experience */
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 0;
+    /* Reduced padding on mobile */
+  }
+
+  .name {
+    font-size: 2.5rem;
+    /* Smaller font for name */
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .hero-image-container {
+    width: 200px;
+    height: 200px;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .cta-buttons .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .nav-links {
+    position: fixed;
+    /* Fixed to viewport so it doesn't scroll away */
+    top: 70px;
+    height: calc(100vh - 70px);
+    /* Full height minus header */
+    overflow-y: auto;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(13, 17, 23, 0.98);
+    /* Ensure readability */
+    backdrop-filter: blur(15px);
+    gap: 30px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    opacity: 0;
+    animation: navItemFade 0.5s ease forwards;
+  }
+
+  /* Stagger animation for links */
+  .nav-links li:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+
+  .nav-links li:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .nav-links li:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  .nav-links li:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+
+  .nav-links li:nth-child(5) {
+    animation-delay: 0.5s;
+  }
+
+  .nav-links li:nth-child(6) {
+    animation-delay: 0.6s;
+  }
+
+  @keyframes navItemFade {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Improvements for Education/Experience Cards on Mobile */
+  .education-card,
+  .timeline-content {
+    padding: 20px;
+  }
+
+  .edu-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+}
